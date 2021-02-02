@@ -3,10 +3,11 @@ import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
-  const [message, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
   
   const sendMessage = (event) => {
-
+    setMessages([...messages, input])
+    setInput('')
   }
 
   return (
@@ -15,6 +16,12 @@ function App() {
 
       <input value={input} onChange={event => setInput(event.target.value)}/> 
       <button onClick={sendMessage}>Send Message</button> 
+
+      {
+        messages.map(message => (
+          <p>{message}</p>
+        ))
+      }
     </div>
   );
 }
